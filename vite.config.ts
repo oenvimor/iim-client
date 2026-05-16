@@ -21,6 +21,16 @@ export default defineConfig(({ command, mode }) => {
     root: process.cwd(),
     assetsInclude: ['./src/assets'],
     plugins: [vue(), vueJsx({}), compressPlugin()],
+    server: {
+      port: 5173,
+      proxy: {
+        '/api': {
+          target: 'http://127.0.0.1:8000',
+          changeOrigin: true,
+          ws: true,
+        },
+      },
+    },
     define: {
       __APP_ENV__: env.APP_ENV,
     },

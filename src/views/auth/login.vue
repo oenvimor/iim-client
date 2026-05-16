@@ -118,15 +118,6 @@ const onValidate = (e) => {
             还没有账号？立即注册
           </n-button>
         </div>
-        <div class="copyright">
-          <a href="https://github.com/iimeta/iim-client" target="_blank">
-            <span
-              ><b>v{{ config.version }}</b></span
-            >
-          </a>
-          <br />
-          <span>Copyright © 2023-2024 IIM. All Rights Reserved.</span>
-        </div>
       </main>
     </section>
   </n-config-provider>

@@ -6,59 +6,6 @@ import { isElectronMode, electron } from '@/utils/common'
 import { isLoggedIn } from '@/utils/auth'
 import socket from '@/socket'
 
-function registerOnceExpireNotice() {
-  let once = false
-  let paths = ['/auth/login', '/auth/register', '/auth/forget']
-
-  document.addEventListener('visibilitychange', () => {
-    if (document.visibilityState === 'hidden') {
-      return
-    }
-
-    if (isLoggedIn() || once) {
-      return
-    }
-
-    const pathname = useRouter().currentRoute.value.path
-    if (paths.includes(pathname)) {
-      return
-    }
-
-    once = true
-
-    window['$dialog'].info({
-      title: '温馨提示',
-      content: '当前登录状态已失效，请重新登录',
-      positiveText: '重新登录',
-      maskClosable: false,
-      onPositiveClick: () => {
-        once = false
-        useRouter().push('/auth/login')
-      },
-    })
-  })
-}
-
-function registerVisitorNotice() {
-
-  let paths = ['/auth/login', '/auth/register', '/auth/forget']
-  const pathname = useRouter().currentRoute.value.path
-
-  if (paths.includes(pathname)) {
-    return
-  }
-  
-  // 3秒后获取用户浏览器权限
-  setTimeout(() => {
-    window['$notification'].create({
-      title: '温馨提示',
-      content:
-        '此站点仅供演示、学习所用，请遵纪守法，文明交流，请勿进行违法违规操作、发布或上传违法资讯',
-      duration: 30000,
-    })
-  }, 3000)
-}
-
 function registerLeaveWebListener() {
   document.addEventListener('visibilitychange', () => {
     useNotifyStore().isLeaveWeb = document.visibilityState === 'hidden'
@@ -148,8 +95,6 @@ function registerConnectListener() {
 
 export function listener() {
   registerNotificationAuth()
-  registerVisitorNotice()
-  registerOnceExpireNotice()
   registerLeaveWebListener()
   registerClickListener()
   registerUnreadListener()

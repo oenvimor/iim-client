@@ -7,7 +7,6 @@ import { isLoggedIn } from '@/utils/auth'
 import SettingRouter from './modules/setting'
 import ContactRouter from './modules/contact'
 import AuthRouter from './modules/auth'
-import VipRouter from './modules/vip'
 import Home from '@/views/index/index.vue'
 
 const routes = [
@@ -32,7 +31,6 @@ const routes = [
   SettingRouter,
   ContactRouter,
   AuthRouter,
-  VipRouter,
   {
     path: '/:pathMatch(.*)*',
     name: '404 NotFound',

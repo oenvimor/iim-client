@@ -11,7 +11,6 @@ import {
   NotebookAndPen,
   AddressBook,
   SmartOptimization,
-  VipOne,
   Api,
 } from "@icon-park/vue-next";
 
@@ -53,11 +52,6 @@ const menus = reactive([
 ]);
 
 const menusFooter = reactive([
-  {
-    link: "/vip/info",
-    icon: VipOne,
-    title: "会员",
-  },
   {
     link: "/settings/detail",
     icon: SettingTwo,
