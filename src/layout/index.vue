@@ -1,6 +1,5 @@
 <script setup>
 import Menu from './component/Menu.vue'
-import Sponsor from './component/Sponsor.vue'
 import { useNotifyStore } from '@/store/notify'
 import { isElectronMode } from '@/utils/common'
 
@@ -35,8 +34,6 @@ defineProps({
       </main>
     </section>
   </section>
-
-  <Sponsor />
 </template>
 <style lang="less" scoped>
 .container {
