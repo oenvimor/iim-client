@@ -1,7 +1,7 @@
 <script setup>
 import Layout from '@/layout/index.vue'
 import SubViewLayout from '@/layout/SubViewLayout.vue'
-import { Tool, Protect, Remind, LinkThree, User } from '@icon-park/vue-next'
+import { Tool, Protect, Remind, User } from '@icon-park/vue-next'
 
 const menus = [
   {
@@ -18,11 +18,6 @@ const menus = [
     name: '个性设置',
     path: '/settings/personalize',
     icon: Tool,
-  },
-  {
-    name: '绑定设置',
-    path: '/settings/binding',
-    icon: LinkThree,
   },
   {
     name: '通知设置',

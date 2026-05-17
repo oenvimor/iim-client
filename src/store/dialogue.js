@@ -43,6 +43,9 @@ export const useDialogueStore = defineStore('dialogue', {
       // 是否显示会话列表
       isShowSessionList: true,
 
+      // 是否机器人对话
+      isRobot: false,
+
       // 群成员列表
       members: [],
 
@@ -81,6 +84,7 @@ export const useDialogueStore = defineStore('dialogue', {
       this.index_name = data.talk_type + '_' + data.receiver_id
       this.records = []
       this.unreadBubble = 0
+      this.isRobot = data.is_robot === 1
       this.isShowEditor = data.is_robot === 0 || data.is_talk === 1
 
       this.members = []
@@ -121,10 +125,41 @@ export const useDialogueStore = defineStore('dialogue', {
 
     // 推送对话记录
     addDialogueRecord(record) {
+      // 如果有同发送者的流式消息，先移除
+      const streamIdx = this.records.findIndex(
+        r => r.streaming && r.user_id === record.user_id
+      )
+      if (streamIdx >= 0) {
+        this.records.splice(streamIdx, 1)
+      }
+
       // TOOD 需要通过 sequence 排序，保证消息一致性
       // this.records.splice(index, 0, record)
 
       this.records.push(record)
+    },
+
+    // 开始流式消息
+    startStreamMessage(senderId) {
+      const streamId = `stream_${senderId}_${Date.now()}`
+      this.records.push({
+        id: streamId,
+        user_id: senderId,
+        content: '',
+        msg_type: 1,
+        float: 'left',
+        streaming: true,
+      })
+    },
+
+    // 追加流式内容
+    appendStreamContent(senderId, content) {
+      const record = this.records.find(
+        r => r.streaming && r.user_id === senderId
+      )
+      if (record) {
+        record.content += content
+      }
     },
 
     // 更新对话记录

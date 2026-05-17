@@ -15,11 +15,6 @@ export default {
       component: () => import('@/views/setting/security.vue'),
     },
     {
-      path: '/settings/binding',
-      meta: { requiresAuth: true },
-      component: () => import('@/views/setting/binding.vue'),
-    },
-    {
       path: '/settings/personalize',
       meta: { requiresAuth: true },
       component: () => import('@/views/setting/personalize.vue'),
