@@ -141,7 +141,7 @@ defineProps({
       align-items: center;
 
       .title {
-        color: #1f2329;
+        color: var(--im-text-color);
         font-size: 14px;
         line-height: 20px;
         flex: 1 1;
@@ -156,7 +156,7 @@ defineProps({
       }
 
       .datetime {
-        color: #8f959e;
+        color: var(--im-text-color-grey);
         font-size: 12px;
         margin-left: 10px;
         user-select: none;
@@ -174,17 +174,17 @@ defineProps({
         overflow: hidden;
         font-weight: 300;
         font-size: 12px;
-        color: #8f959e;
+        color: var(--im-text-color-grey);
         display: flex;
 
         .draft {
-          color: red;
+          color: #e04c4c;
           padding-right: 3px;
           flex-shrink: 0;
         }
 
         .online {
-          color: #8bc34a;
+          color: #65b844;
           padding-right: 3px;
           flex-shrink: 0;
         }
@@ -203,7 +203,7 @@ defineProps({
         align-items: center;
 
         .unread {
-          color: #8f959e;
+          color: var(--im-text-color-grey);
           font-size: 12px;
           user-select: none;
 
@@ -216,7 +216,7 @@ defineProps({
         }
 
         .disturb {
-          color: #8f959e;
+          color: var(--im-text-color-grey);
           font-size: 12px;
           user-select: none;
         }
@@ -224,7 +224,7 @@ defineProps({
     }
   }
 
-  --actived-bg: #ececec;
+  --actived-bg: var(--im-active-bg-color);
 
   &:hover,
   &.actived {
@@ -234,32 +234,39 @@ defineProps({
 
 .badge {
   &.top {
-    color: red !important;
-    background-color: #ffdddd !important;
+    color: #e04c4c;
+    background-color: rgba(224, 76, 76, 0.1);
   }
 
   &.roboot {
-    color: #dc9b04 !important;
-    background-color: #faf1d1 !important;
+    color: #d4901c;
+    background-color: rgba(238, 144, 40, 0.1);
   }
 
   &.group {
-    color: #3370ff !important;
-    background-color: #e1eaff !important;
+    color: #4c7cf0;
+    background-color: rgba(76, 124, 240, 0.1);
   }
 }
 
 html[data-theme='dark'] {
   .talk {
-    --actived-bg: rgb(44, 44, 50);
+    .badge {
+      &.top {
+        color: #ff6b6b;
+        background-color: rgba(255, 107, 107, 0.15);
+      }
 
-    .nickname {
-      color: #ffffff;
+      &.roboot {
+        color: #f0a020;
+        background-color: rgba(240, 160, 32, 0.15);
+      }
+
+      &.group {
+        color: #5e8cff;
+        background-color: rgba(94, 140, 255, 0.15);
+      }
     }
-  }
-
-  .disturb {
-    color: #ffffff;
   }
 }
 </style>

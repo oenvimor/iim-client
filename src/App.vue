@@ -20,7 +20,7 @@ import { useUserStore, useNotifyStore, useTalkStore } from '@/store'
 import socket from '@/socket'
 import { publisher } from '@/utils/publisher.ts'
 import { listener } from '@/listener'
-import { overrides } from '@/constant/theme'
+import { overrides, lightOverrides, darkOverrides } from '@/constant/theme'
 import { isLoggedIn } from '@/utils/auth'
 import { NotificationApi, MessageApi, DialogApi } from '@/components/common'
 import UserCardModal from '@/components/user/UserCardModal.vue'
@@ -56,8 +56,9 @@ const getDarkTheme = computed(() => {
 
 const getThemeOverride = computed(() => {
   if (notifyStore.darkTheme) {
-    overrides.common.bodyColor = '#202124'
-    overrides.common.baseColor = '#ffffff'
+    Object.assign(overrides.common, darkOverrides.common)
+  } else {
+    Object.assign(overrides.common, lightOverrides.common)
   }
 
   return overrides

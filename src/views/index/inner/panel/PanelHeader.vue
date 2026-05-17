@@ -274,4 +274,20 @@ const onSetMenu = () => {
     background: #f97348;
   }
 }
+
+html[data-theme='dark'] {
+  .box-header {
+    .online {
+      color: rgba(255, 255, 255, 0.45);
+    }
+
+    .keyboard-status {
+      color: rgba(255, 255, 255, 0.4);
+    }
+
+    .right-module p {
+      color: rgba(255, 255, 255, 0.5);
+    }
+  }
+}
 </style>

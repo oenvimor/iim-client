@@ -69,7 +69,7 @@ const store = useUserStore();
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(to bottom right, #247ec6, #73c1ff);
+    background: linear-gradient(135deg, #EE9028, #f5b840);
 
     .gender {
       width: 20px;
@@ -107,7 +107,7 @@ const store = useUserStore();
     border-radius: 5px;
     padding: 5px 8px;
     line-height: 25px;
-    background: #f3f5f7;
+    background: var(--im-message-left-bg-color);
     color: var(--im-text-color);
     font-size: 12px;
     margin-bottom: 20px;
@@ -147,16 +147,16 @@ const store = useUserStore();
 
 html[data-theme="dark"] {
   .account-card .card-header {
-    background: #2c2c32;
+    background: linear-gradient(135deg, rgba(238, 144, 40, 0.7), rgba(200, 120, 30, 0.5));
   }
 
   .account-card .card-main .usersign {
-    background-color: #2c2c32;
+    background-color: rgba(255, 255, 255, 0.04);
   }
   .infos {
     .info-item {
       .name {
-        color: #afabab;
+        color: rgba(255, 255, 255, 0.45);
       }
     }
   }
