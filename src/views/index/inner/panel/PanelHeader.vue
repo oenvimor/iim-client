@@ -55,14 +55,11 @@ const onSetMenu = () => {
       </span>
       <span class="nickname">{{ username }}</span>
       <span class="num" v-show="type == 2 && num">({{ num }})</span>
-    </div>
-
-    <div class="module center-module" v-if="type == 1">
-      <p class="online">
+      <span class="online" v-if="type == 1">
         <span class="online-status" v-show="online"></span>
-        <span>{{ online ? "在线" : "离线" }}</span>
-      </p>
-      <p class="keyboard-status" v-show="keyboard">对方正在输入 ...</p>
+        <span class="online-text">{{ online ? "在线" : "离线" }}</span>
+      </span>
+      <span class="keyboard-status" v-if="type == 1 && keyboard">对方正在输入 ...</span>
     </div>
 
     <div class="module right-module">
@@ -98,7 +95,6 @@ const onSetMenu = () => {
   .menu {
     width: 50px;
     position: absolute;
-    // height: inherit;
     display: flex;
     align-items: center;
     left: 0;
@@ -136,24 +132,13 @@ const onSetMenu = () => {
       white-space: nowrap;
       text-overflow: ellipsis;
     }
-  }
-
-  .center-module {
-    flex-direction: column;
-    justify-content: center;
-
-    width: 100px;
 
     .online {
       color: #cccccc;
       font-weight: 300;
-      font-size: 15px;
-      width: 50px;
-      text-align: center;
-
-      &.color {
-        color: #ee9028;
-      }
+      font-size: 13px;
+      margin-left: 8px;
+      flex-shrink: 0;
 
       .online-status {
         position: relative;
@@ -163,9 +148,8 @@ const onSetMenu = () => {
         height: 6px;
         vertical-align: middle;
         border-radius: 50%;
-        position: relative;
         background-color: #ee9028;
-        margin-right: 5px;
+        margin-right: 4px;
 
         &:after {
           position: absolute;
@@ -183,9 +167,10 @@ const onSetMenu = () => {
     }
 
     .keyboard-status {
-      height: 20px;
-      line-height: 18px;
-      font-size: 10px;
+      font-size: 12px;
+      color: #999;
+      margin-left: 8px;
+      flex-shrink: 0;
       animation: inputfade 600ms infinite;
       -webkit-animation: inputfade 600ms infinite;
     }
